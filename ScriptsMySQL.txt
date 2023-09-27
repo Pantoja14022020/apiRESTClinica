@@ -1,0 +1,44 @@
+medicamento:
+create table medicamento( id_medicamento int not null AUTO_INCREMENT, PRIMARY KEY (id_medicamento), descripcion varchar(30));
+
+sugerencia:
+create table sugerencia( id_sugerencia int not null AUTO_INCREMENT, PRIMARY KEY (id_sugerencia), clave varchar(10) not null, descripcion varchar(30) not null);
+
+unidad:
+create table unidad(id_unidad int not null AUTO_INCREMENT, PRIMARY KEY (id_unidad), clues varchar(20) not null, nombre varchar(35) not null);
+
+unidad_medicamento:
+create table unidad_medicamento( id_u_m int not null AUTO_INCREMENT, PRIMARY KEY (id_u_m), id_unidad int, KEY id_unidad_idx (id_unidad), id_medicamento int, KEY id_medicamento_idx (id_medicamento) );
+
+estatus:
+create table estatus( id_estatus int not null AUTO_INCREMENT, PRIMARY KEY (id_estatus), descripcion varchar(30) not null );
+
+referencia:
+create table referencia ( id_referencia int not null AUTO_INCREMENT, PRIMARY KEY (id_referencia), descripcion varchar(50) not null);
+
+motivo_baja:
+create table motivo_baja ( id_motivo_baja int not null AUTO_INCREMENT, PRIMARY KEY (id_motivo_baja), descripcion varchar(35) not null );
+
+paciente:
+create table paciente (id_paciente int not null AUTO_INCREMENT, PRIMARY KEY (id_paciente), nombre varchar(15) not null , a_paterno varchar(30) not null, a_materno varchar(30) not null, edad int not null, sexo varchar(1) not null, id_estatus int, KEY id_estatus_idx (id_estatus), id_unidad int, KEY id_unidad_idx (id_unidad),dm boolean, hta boolean, ob boolean, dis boolean, sm boolean);
+
+tratamiento_medicamento_paciente_cita:
+create table tratamiento_medicamento_paciente_cita(id_t_m_p_c int not null AUTO_INCREMENT, PRIMARY KEY (id_t_m_p_c), id_medicamento int, KEY id_medicamento_idx (id_medicamento), id_paciente int, KEY id_paciente_idx (id_paciente), id_cita int, KEY id_cita_idx(id_cita) );
+
+tratamiento_sugerencia_paciente_cita:
+create table tratamiento_sugerencia_paciente_cita( id_t_s_p_c int not null AUTO_INCREMENT, PRIMARY KEY (id_t_s_p_c), id_sugerencia int, KEY id_sugerencia_idx (id_sugerencia), id_paciente int, KEY id_paciente_idx (id_paciente), id_cita int, KEY id_cita_idx(id_cita) );
+
+estado_control:
+create table estado_control( id_ec int not null AUTO_INCREMENT, PRIMARY KEY(id_ec), clave varchar(15) not null, descripcion varchar(30) not null);
+
+complicaciones:
+create table complicaciones( id_comp int not null AUTO_INCREMENT, PRIMARY KEY(id_comp), clave varchar(15) not null, descripcion varchar(30) not null);
+
+grado_adiccion_tabaco:
+create table grado_adiccion_tabaco (id_grado int not null AUTO_INCREMENT, PRIMARY KEY(id_grado), descripcion varchar(30) not null);
+
+estado_pie:
+create table estado_pie(id_estado int not null AUTO_INCREMENT, PRIMARY KEY(id_estado), descripcion varchar(35) not null);
+
+cita:
+INSERT INTO cita(fecha,peso,imc,sobrepeso,cc,pa_sistolica,pa_diastolica,gluc_ayuno,gluc_casual,hba1c,fondo_de_ojo,id_estado,colesterol_total_mg_dl,colesterol_ldl_mg_dl,colesterol_hdl_mg_dl,trigliceridos_mg_dl,microalbuminuria,creatinina,id_ec,no_farmacologico,farmacologicos,GAMEC,complicaciones,id_grado,id_referencia,id_motivo_baja,vacuna_antiinfluenza,dm,hta,obe,dlp,sm) VALUES('2023-03-02',79,32.88,0,110,110,60,0,0,6.8,1,2,0,0,0,0,0,0,);
