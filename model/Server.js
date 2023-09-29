@@ -11,6 +11,9 @@ class Server{
         this.pacienteCitaPath= '/api/paciente-cita'
         this.pacienteArchivoHistorial = '/api/generarArchivo'
 
+        //Obtener los diferentes estados de pie
+        this.estadoPie = '/api/estado_pie';
+
         this.databaseConnect();
 
         this.middleware();
@@ -35,6 +38,7 @@ class Server{
         this.app.use(this.pacientePath,require('../routes/paciente'));
         this.app.use(this.pacienteCitaPath, require('../routes/pacienteCita'));
         this.app.use(this.pacienteArchivoHistorial,require('../routes/archivoDatos'));
+        this.app.use(this.estadoPie, require('../routes/estadoPie'));
     }
 
     listen(){
