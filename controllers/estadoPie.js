@@ -3,7 +3,7 @@ const {request,response} = require('express');
 
 const getEstadoPie = async (req=request,res=response) => {
     try {
-        const [row,fields] = (await connection.execute('SELECT * FROM estado'));   
+        const [row,fields] = (await connection.execute('SELECT * FROM estado_pie'));   
         res.status(200).json({estados_de_pie:row})
     } catch (error) {
         res.status(400).json({msg:'No se pudo obtener registros de la tabla estado_pie'})

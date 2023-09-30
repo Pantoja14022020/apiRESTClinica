@@ -12,7 +12,7 @@ class Server{
         this.pacienteArchivoHistorial = '/api/generarArchivo'
 
         //Obtener los diferentes estados de pie
-        this.estadoPie = '/api/estado_pie';
+        this.estadoPie = '/api/estado_pie'
 
         this.databaseConnect();
 
