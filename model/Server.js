@@ -14,6 +14,15 @@ class Server{
         //Obtener los diferentes estados de pie
         this.estadoPie = '/api/estado_pie'
 
+        //Obtener grado de adiccion al tabaco
+        this.gradoAdiccion = '/api/grado_adiccion_tabaco'
+
+        //Obtener referencia
+        this.referencia = '/api/referencia';
+
+        //Obtener motivo de baja
+        this.motivoBaja = '/api/motivo_baja';
+
         this.databaseConnect();
 
         this.middleware();
@@ -39,6 +48,9 @@ class Server{
         this.app.use(this.pacienteCitaPath, require('../routes/pacienteCita'));
         this.app.use(this.pacienteArchivoHistorial,require('../routes/archivoDatos'));
         this.app.use(this.estadoPie, require('../routes/estadoPie'));
+        this.app.use(this.gradoAdiccion, require('../routes/gradoAdiccion'));
+        this.app.use(this.referencia, require('../routes/referencia'));
+        this.app.use(this.motivoBaja, require('../routes/motivoBaja'));
     }
 
     listen(){
